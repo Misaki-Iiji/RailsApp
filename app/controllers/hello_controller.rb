@@ -1,5 +1,5 @@
 class HelloController < ApplicationController
-  protect_from_forgery #CSRF対策
+  # protect_from_forgery #CSRF対策
   def index
     if request.post? then
       @title = 'Result'
