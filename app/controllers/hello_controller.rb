@@ -1,14 +1,17 @@
 class HelloController < ApplicationController
   # protect_from_forgery #CSRF対策
+
   def index
     if request.post? then
       @title = 'Result'
-      @msg = 'you typed: ' + params['input1'] + '.'
-      @value = params['input1']
+      if params['check1'] then
+        @msg = 'you Checked!!'
+      else
+        @msg = 'not checked...'
+      end
     else
       @title = 'Index'
       @msg = 'type text...'
-      @value = ''
     end
   end
 end
