@@ -44,8 +44,8 @@ layout 'people'
     @msg = 'Please type search word...'
     @people = Array.new
     if request.post? then
-      @people = Person.where "mail like ?",
-      '%' + params[:find] + '%'
+      f = params[:find].split ','
+      @people = Person.where "age >= ? and age <= ?", f[0], f[1]
     end
   end
 
