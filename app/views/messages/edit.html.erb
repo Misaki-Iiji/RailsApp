@@ -1,2 +1,25 @@
-<h1>Messages#edit</h1>
-<p>Find me in app/views/messages/edit.html.erb</p>
+<h1 class="display-4 text-promary">Messages#edit</h1>
+<p><%= @msg %></p>
+<% if @message.errors.any? %>
+  <ul>
+    <% @message.errors.full_message.each do |err| %>
+      <li><%= err %></li>
+    <% end%>
+  </ul>
+<% end %>
+
+<%= form_for(@message, url:{controller: 'messages', action: 'update'}) do |form| %>
+  <div class="form-group">
+    <label for="peason_id">peason ID</label>
+    <%= form.text_field :peason_id, {class: "form-control"} %>
+  </div>
+    <div class="form-group">
+    <label for="title">title</label>
+    <%= form.text_field :title, {class: "form-control"} %>
+  </div>
+    <div class="form-group">
+    <label for="message">message</label>
+    <%= form.text_area :message, {rows: 3, class: "form-control"} %>
+    <%= form.submit "更新" %>
+  </div>
+<% end %>
