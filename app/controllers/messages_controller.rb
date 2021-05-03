@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
   end
 
   def add
-    @msg = 'Message data'
+    @msg = 'Message data.'
     @message = Message.new
   end
 
@@ -37,8 +37,7 @@ class MessagesController < ApplicationController
   end
 
   private
-
   def message_params
-    params.requie(:message).permit(:person_id, :title, :message)
+    params.require(:message).permit(:person_id, :title, :message)
   end
 end
