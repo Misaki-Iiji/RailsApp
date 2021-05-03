@@ -26,13 +26,19 @@ class MessagesController < ApplicationController
   end
 
   def edit
-    @msg = "edit data[id = " + params[id] + "]"
+    @msg = "edit data[id = " + params[:id] + "]"
     @message = Message.find(params[:id])
   end
 
   def update
     obj = Message.find(params[:id])
     obj.update(message_params)
+    redirect_to '/messages'
+  end
+
+  def delete
+    obj = Message.find(params[:id])
+    obj.destroy
     redirect_to '/messages'
   end
 
