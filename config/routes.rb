@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :questions
   resources :mycontacts
   get 'messages/index'
   get 'messages', to: 'messages#index'
